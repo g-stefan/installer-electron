@@ -5,13 +5,15 @@ rem Created by Grigore Stefan <g_stefan@yahoo.com>
 
 echo -^> make electron
 
+call build.config.cmd
+
 if exist release\ rmdir /Q /S release
 if exist build\ rmdir /Q /S build
 
 mkdir release
 mkdir build
 
-7z x vendor/electron-v10.1.1-win32-x64.zip -aoa -orelease
+7z x vendor/electron-v%PRODUCT_VERSION%-win32-x64.zip -aoa -orelease
 
 pushd build
 call npm install electron-context-menu

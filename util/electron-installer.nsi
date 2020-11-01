@@ -13,7 +13,7 @@
 Name "Electron"
 
 ; Version
-!define ElectronVersion "10.1.1"
+!define ElectronVersion "$%PRODUCT_VERSION%"
 
 ; The file to write
 OutFile "installer\electron-${ElectronVersion}-installer.exe"
