@@ -6,13 +6,13 @@
 			{
 				"name" : "installer-electron",
 				"SPDX-License-Identifier": "MIT",
-				"version" : "21.3.4",
+				"version" : "24.0.0",
 				"noVersion" : true
 			}
 		],
 		"hasGithub" : true,
 		"sourceLinks" : {
-			"electron-v21.3.4-win32-x64.zip" : "https://github.com/electron/electron/releases"
+			"electron-v24.0.0-win32-x64.zip" : "https://github.com/electron/electron/releases"
 		}
 	}
 }
