@@ -10,7 +10,6 @@
 				"noVersion" : true
 			}
 		],
-		"hasGithub" : true,
 		"sourceLinks" : {
 			"electron-v24.0.0-win32-x64.zip" : "https://github.com/electron/electron/releases"
 		}
