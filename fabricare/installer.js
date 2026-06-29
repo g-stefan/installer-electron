@@ -13,10 +13,10 @@ Shell.setenv("PRODUCT_VERSION", Project.version);
 Shell.setenv("PRODUCT_BASE", "electron");
 
 exitIf(Shell.system("makensis.exe /NOCD \"source\\electron-installer.nsi\""));
-exitIf(Shell.system("grigore-stefan.sign \"Electron\" \"release\\electron-" + Project.version + "-installer.exe\""));
+exitIf(Shell.system("grigore-stefan.sign \"Electron\" \"release\\xyo-electron-" + Project.version + "-installer.exe\""));
 
-var fileName = "electron-" + Project.version + "-installer.exe";
-var jsonName = "electron-" + Project.version + "-installer.json";
+var fileName = "xyo-electron-" + Project.version + "-installer.exe";
+var jsonName = "xyo-electron-" + Project.version + "-installer.json";
 
 var json = {};
 json[fileName] = SHA512.fileHash("release/" + fileName);

@@ -6,12 +6,12 @@
 			{
 				"name" : "installer-electron",
 				"SPDX-License-Identifier": "MIT",
-				"version" : "38.2.2",
+				"version" : "42.4.1",
 				"noVersion" : true
 			}
 		],
 		"sourceLinks" : {
-			"electron-v38.2.2-win32-x64.zip" : "https://github.com/electron/electron/releases"
+			"electron-v42.4.1-win32-x64.zip" : "https://github.com/electron/electron/releases"
 		}
 	}
 }

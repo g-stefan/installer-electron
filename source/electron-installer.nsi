@@ -17,18 +17,18 @@ Name "Electron"
 !define ElectronVersion "$%PRODUCT_VERSION%"
 
 ; The file to write
-OutFile "release\electron-${ElectronVersion}-installer.exe"
+OutFile "release\xyo-electron-${ElectronVersion}-installer.exe"
 
 Unicode True
 RequestExecutionLevel admin
 BrandingText "Grigore Stefan [ github.com/g-stefan ]"
 
 ; The default installation directory
-InstallDir "$PROGRAMFILES64\Electron"
+InstallDir "$PROGRAMFILES64\XYO\Electron"
 
 ; Registry key to check for directory (so if you install again, it will 
 ; overwrite the old one automatically)
-InstallDirRegKey HKLM "Software\Electron" "InstallPath"
+InstallDirRegKey HKLM "Software\XYO\Electron" "InstallPath"
 
 ;--------------------------------
 ;Interface Settings
@@ -112,16 +112,16 @@ Section "Electron (required)" MainSection
 
 	; Set output path to the installation directory.
 	SetOutPath $INSTDIR
-	WriteRegStr HKLM "Software\Electron" "InstallPath" "$INSTDIR"
+	WriteRegStr HKLM "Software\XYO\Electron" "InstallPath" "$INSTDIR"
 
 	; Write the uninstall keys for Windows
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Electron" "DisplayName" "Electron"
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Electron" "Publisher" "Grigore Stefan [ github.com/g-stefan ]"
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Electron" "DisplayVersion" "${ElectronVersion}"
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Electron" "DisplayIcon" '"$INSTDIR\electron.exe"'
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Electron" "UninstallString" '"$INSTDIR\Uninstall.exe"'
-	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Electron" "NoModify" 1
-	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Electron" "NoRepair" 1
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\XYO-Electron" "DisplayName" "XYO Electron"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\XYO-Electron" "Publisher" "Grigore Stefan [ github.com/g-stefan ]"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\XYO-Electron" "DisplayVersion" "${ElectronVersion}"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\XYO-Electron" "DisplayIcon" '"$INSTDIR\electron.exe"'
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\XYO-Electron" "UninstallString" '"$INSTDIR\Uninstall.exe"'
+	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\XYO-Electron" "NoModify" 1
+	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\XYO-Electron" "NoRepair" 1
 
 	; Program files
 	File /r "output\*"
@@ -136,7 +136,7 @@ Section "Electron (required)" MainSection
 	; Computing EstimatedSize
 	Call GetInstalledSize
 	Pop $0
-	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Electron" "EstimatedSize" "$0"
+	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\XYO-Electron" "EstimatedSize" "$0"
 
 	; Set to HKLM
 	EnVar::SetHKLM
@@ -207,10 +207,10 @@ Section "Uninstall"
 	!macroend
  
 	ClearErrors
-	ReadRegStr $INSTDIR HKLM "Software\Electron" "InstallPath"
+	ReadRegStr $INSTDIR HKLM "Software\XYO\Electron" "InstallPath"
 	IfErrors +2
 	StrCmp $INSTDIR "" 0 +2
-		StrCpy $INSTDIR "$PROGRAMFILES64\Electron"
+		StrCpy $INSTDIR "$PROGRAMFILES64\XYO\Electron"
  
 	# Check that the uninstall isn't dangerous.
 	!insertmacro BadPathsCheck
@@ -234,8 +234,8 @@ Section "Uninstall"
 	SetOutPath $TEMP
 
 	; Remove registry keys
-	DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Electron"
-	DeleteRegKey HKLM "Software\Electron"
+	DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\XYO-Electron"
+	DeleteRegKey HKLM "Software\XYO\Electron"
 
 	; Remove files and uninstaller
 	RMDir /r "$INSTDIR"
