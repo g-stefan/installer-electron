@@ -153,10 +153,10 @@ Section "Electron (required)" MainSection
 	EnVar::SetHKCU
 
 	; Set NODE_PATH
-	EnVar::Check "NODE_PATH" "$INSTDIR\modules"
+	EnVar::Check "NODE_PATH" "$INSTDIR\node_modules"
 	Pop $0
 	${If} $0 <> 0
-		EnVar::AddValue "NODE_PATH" "$INSTDIR\modules"
+		EnVar::AddValue "NODE_PATH" "$INSTDIR\node_modules"
 		Pop $0
 	${EndIf}
 
@@ -255,10 +255,10 @@ Section "Uninstall"
 	EnVar::SetHKCU
 
 	; Remove NODE_PATH
-	EnVar::Check "NODE_PATH" "$INSTDIR\modules"
+	EnVar::Check "NODE_PATH" "$INSTDIR\node_modules"
 	Pop $0
 	${If} $0 = 0
-		EnVar::DeleteValue "NODE_PATH" "$INSTDIR\modules"
+		EnVar::DeleteValue "NODE_PATH" "$INSTDIR\node_modules"
 		Pop $0
 		EnVar::Update HKCU NODE_PATH
 		ReadEnvStr $0 NODE_PATH

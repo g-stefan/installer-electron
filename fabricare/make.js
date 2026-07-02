@@ -22,4 +22,4 @@ runInPath("temp", function() {
 	Shell.system("cmd /C \"call npm install electron-context-menu\"");
 });
 
-Shell.rename("temp/node_modules","output/modules");
+Shell.rename("temp/node_modules","output/node_modules");
